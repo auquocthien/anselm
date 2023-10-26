@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "630735264605",
+    "firebase_url": "https://anselm-401702-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "anselm-401702",
+    "storage_bucket": "anselm-401702.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630735264605:android:4e0c45215472aeb172a6b4",
+        "android_client_info": {
+          "package_name": "com.example.anselm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630735264605-3moa4d9djq3goijr0ug40ia1rark6d46.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNOoyHM8Cl6UEUP4DLYIZ-a3kTlmV0rf8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "630735264605-3moa4d9djq3goijr0ug40ia1rark6d46.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
