@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-var selectedIndex = 3;
+var selectedIndex = 0;
 var panelOpen = false;
 var appBarTxt = "Music";
 

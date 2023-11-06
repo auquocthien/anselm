@@ -1,5 +1,6 @@
 class ScreenArguments {
   String? label;
   String? uri;
-  ScreenArguments(this.label, this.uri);
+  String? location;
+  ScreenArguments(this.label, this.uri, this.location);
 }

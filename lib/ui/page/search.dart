@@ -39,7 +39,9 @@ class _SearchState extends State<SearchScreen> {
     List listVideo = [];
 
     for (var element in labels.toList()) {
-      if (element.nameVni.toLowerCase().contains(searchText.toLowerCase())) {
+      if (element.nameVni
+          .toLowerCase()
+          .contains(searchText.trim().toLowerCase())) {
         listVideo.add(element.nameEng);
       }
     }
@@ -146,7 +148,7 @@ class _SearchState extends State<SearchScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: 300,
+                width: 280,
                 child: TextField(
                   controller: editingController,
                   onChanged: (value) {
@@ -171,7 +173,7 @@ class _SearchState extends State<SearchScreen> {
                   style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFB6AFAF),
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
+                          horizontal: 20, vertical: 17),
                       textStyle: const TextStyle(
                           fontSize: 20, fontWeight: FontWeight.bold)),
                   onPressed: () async {
@@ -199,12 +201,16 @@ class _SearchState extends State<SearchScreen> {
         ),
         Container(
           height: 70,
+          margin: const EdgeInsets.only(left: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               FilterChip(
                 label: const Text('Miền Bắc'),
                 selected: checkValue1,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
                 onSelected: (bool? value) async {
                   setState(() {
                     checkValue1 = value!;
@@ -218,6 +224,9 @@ class _SearchState extends State<SearchScreen> {
               ),
               FilterChip(
                 label: const Text('Miền Nam'),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
                 selected: checkValue2,
                 onSelected: (bool? value) async {
                   setState(() {
@@ -232,6 +241,9 @@ class _SearchState extends State<SearchScreen> {
                 },
               ),
               FilterChip(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
                 label: const Text('Miền Trung'),
                 selected: checkValue3,
                 onSelected: (bool? value) async {
@@ -248,6 +260,9 @@ class _SearchState extends State<SearchScreen> {
               ),
               FilterChip(
                 label: const Text('Khác'),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
                 selected: checkValue4,
                 onSelected: (bool? value) async {
                   setState(() {
@@ -265,10 +280,11 @@ class _SearchState extends State<SearchScreen> {
           ),
         ),
         Expanded(
-            child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: VideoGrid(urlVideo, labelVideo),
-        ))
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: VideoGrid(urlVideo, labelVideo),
+          ),
+        )
         // Text(urlVideo[2].toString())
       ],
     );

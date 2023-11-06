@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
         if (settings.name == VideoDetail.routeName) {}
         return MaterialPageRoute(builder: (ctx) {
           ScreenArguments? agruments = agr as ScreenArguments?;
-          return VideoDetail(agruments!.label!, agruments.uri!);
+          return VideoDetail(
+              agruments!.label!, agruments.uri!, agruments.location!);
         });
       },
     );

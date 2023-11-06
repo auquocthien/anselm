@@ -6,6 +6,7 @@ import 'package:video_player/video_player.dart';
 class VideoGridTitle extends StatefulWidget {
   final String url;
   final String label;
+
   const VideoGridTitle(this.url, this.label, {super.key});
 
   @override
@@ -30,31 +31,83 @@ class _VideoGridTitleState extends State<VideoGridTitle> {
     super.dispose();
   }
 
+  String showLocation() {
+    print(widget.url);
+    String location = widget.url.split('/')[7].split('?')[0].split('.')[0];
+    print(location);
+    if (location.endsWith('T')) {
+      location = 'Miền Trung';
+    } else {
+      if (location.endsWith('B')) {
+        location = 'Miền Bắc';
+      } else {
+        if (location.endsWith('N')) {
+          location = 'Miền Nam';
+        } else {
+          location = 'Toàn quốc';
+        }
+      }
+    }
+
+    return location;
+  }
+
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       child: GridTile(
-        child: Column(
-          children: [
-            GestureDetector(
-              onTap: () {
-                print(widget.url);
-                Navigator.of(context).pushNamed(VideoDetail.routeName,
-                    arguments: ScreenArguments(widget.label, widget.url));
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    border: Border.all(width: 0.5),
-                    borderRadius: const BorderRadius.all(Radius.circular(3))),
-                height: 100,
-                child: AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  child: VideoPlayer(_controller),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 5.0, bottom: 8.0),
+          child: GestureDetector(
+            onTap: () {
+              print(widget.url);
+              Navigator.of(context).pushNamed(VideoDetail.routeName,
+                  arguments: ScreenArguments(
+                      widget.label, widget.url, showLocation()));
+            },
+            child: Row(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 0.5),
+                      borderRadius: const BorderRadius.all(Radius.circular(3))),
+                  height: 100,
+                  child: AspectRatio(
+                    aspectRatio: _controller.value.aspectRatio,
+                    child: VideoPlayer(_controller),
+                  ),
                 ),
-              ),
+                Container(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  width: 180,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.label,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          showLocation(),
+                          style: const TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 16),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
             ),
-            Text(widget.label)
-          ],
+          ),
         ),
       ),
     );
